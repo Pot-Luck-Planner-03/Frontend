@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 
-import Signup from './components/signup';
+import Signup from './components/SignUpForm/signupMain';
 import Login from './components/login'
 import NewEvent from './components/newEvent';
 
