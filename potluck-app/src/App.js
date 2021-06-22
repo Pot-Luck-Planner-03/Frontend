@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 
 import Signup from './components/signup';
-import Login from './components/login'
+import Login from './components/LoginForm/login'
 import NewEvent from './components/newEvent';
 
 function App() {

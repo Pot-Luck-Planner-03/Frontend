@@ -1,9 +1,18 @@
 import React from 'react';
+import * as yup from 'yup';
 
-function Login(){
+
+
+function Login(props){
+	const {values, submit, change, errors} = props;
+
+	const handleChange = e => {
+		const {name, value} = e.target;
+		change(name, value)
+	};
 
     return (
-        <form id="login" className="box">
+        <form id="login" className="box" onSubmit={submit}>
 			<h1>Login Here</h1>
 
 			<label>
@@ -13,8 +22,8 @@ function Login(){
 					name="username"
 					id="name-input"
 					placeholder="Username"
-					// value={credentials.username}
-					// onChange={handleChange}
+					onChange={handleChange}
+					value={values.username}
 				/>
 			</label>
 			<br />
@@ -26,8 +35,8 @@ function Login(){
 					id="password-input"
 					minLength="5"
 					placeholder="Password"
+					onChange={handleChange}
 					// value={credentials.password}
-					// onChange={handleChange}
 				/>
 			</label>
 			<br />
