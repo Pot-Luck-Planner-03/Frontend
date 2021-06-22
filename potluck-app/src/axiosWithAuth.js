@@ -5,6 +5,6 @@ export const axiosWithAuth = () => {
     headers: {
       Authorization: JSON.parse(window.localStorage.getItem("token")),
     },
-    baseURL: "",
+    baseURL: "https://potluck-planner-03.herokuapp.com",
   });
 };
