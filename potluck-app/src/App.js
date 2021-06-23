@@ -2,8 +2,11 @@ import './App.css';
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 
+
+import Login from './components/LoginForm/login'
+
 import Signup from './components/SignUpForm/signupMain';
-import Login from './components/login'
+
 import NewEvent from './components/newEvent';
 
 function App() {
