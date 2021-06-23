@@ -2,7 +2,7 @@ import {
     ADD_FEATURE,
     NEW_USER_FEATURE,
     LOGIN_FEATURE,
-  } from '../Actions/potluckActions';
+  } from '../Actions/potluckAction';
   
   const initialState = {
     user: {

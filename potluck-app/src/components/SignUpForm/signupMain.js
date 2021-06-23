@@ -4,7 +4,7 @@ import Signup from './signup';
 
 import * as yup from 'yup';
 import schema from './signupSchema';
-import { newUserFeature } from '../../Actions/potluckActions';
+import { newUserFeature } from '../../Actions/potluckAction';
 import { useHistory } from 'react-router-dom';
 
 const initialFormValues = {
