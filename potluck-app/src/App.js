@@ -3,18 +3,25 @@ import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 
 
-import Login from './components/LoginForm/login'
-
+import Login from './components/LoginForm/loginMain'
 import Signup from './components/SignUpForm/signupMain';
+// import NewEvent from './components/newEvent';
+import Dashboard from './components/dashboard';
 
-import NewEvent from './components/newEvent';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
+
+    const logout = () => {
+      window.localStorage.removeItem('token');
+    };
+
   return (
     <div className="App">
 			<div className="wrapper">
 				<div className="container">
 					<div className="nav">
+
             <div className='header'>
 
 						  <div className="logo">Potluck Planning!</div>
@@ -57,8 +64,10 @@ function App() {
                     );
                   }}
                 />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
             </div>
+
           </div>   
 
 				</div>

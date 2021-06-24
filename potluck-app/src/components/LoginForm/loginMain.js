@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Login from './login'
+import formSchema from './loginSchema';
+import * as yup from 'yup';
 
 const initialCredentials = {
 	username: '',
@@ -13,19 +15,18 @@ const initialsErrors = {
 }
 
 const initialLogins = [];
-// const initialDisabled = true;
+const initialDisabled = true;
 
 
 function LoginMain(){
     const [logins, setLogins] = useState(initialLogins)
     const [credentials, setCredentials] = useState(initialCredentials)
     const [errors, setErrors] = useState(initialsErrors)
-    // const [disabled, setDisabled] = useState(initialDisabled)
+    const [disabled, setDisabled] = useState(initialDisabled)
 
-    const submitLogin = e => {
-        e.preventDefault();
+    const submitLogin = (newLogin) => {
         axios  
-            .post('https://potluck-planner-03.herokuapp.com/api/auth/login', credentials)
+            .post('https://potluck-planner-03.herokuapp.com/api/auth/login', newLogin)
             .then(res => {
                 setLogins([...logins, res.data])
                 setCredentials(initialCredentials);
@@ -37,7 +38,21 @@ function LoginMain(){
     
 
     const handleChange = (name, value) => {
-        //YUP
+        yup
+        .reach(formSchema, name)
+        .validate(value)
+        .then(() => {
+          setErrors({
+            ...errors,
+            [name]: '',
+          });
+        })
+        .catch((err) => {
+          setErrors({
+            ...errors,
+            [name]: err.errors[0],
+          });
+        });
         
         
         setCredentials({
@@ -45,6 +60,12 @@ function LoginMain(){
             [name]: value,
         })
     }
+
+    useEffect(() => {
+        formSchema.isValid(credentials).then((valid) => {
+          setDisabled(!valid);
+        });
+      }, [credentials]);
 
 
     const handleSubmit = () => {
@@ -58,10 +79,11 @@ function LoginMain(){
 
     return (
         <Login 
-            values={initialCredentials}
+            values={credentials}
             submit={handleSubmit}
             change={handleChange}
             errors={initialsErrors}
+            disabled={disabled}
         />
         // <form id="login" className="box">
 		// 	<h1>Login Here</h1>

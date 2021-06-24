@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+
 
 function Signup(props){
 
@@ -12,12 +12,6 @@ function Signup(props){
 	  change(name, value);
 	};
   
-	const { push } = useHistory();
-  
-	const routeToHome = () => {
-	  push('/');
-	}
-  
 	const onSubmit = (evt) => {
 	  evt.preventDefault();
 	  submit();
@@ -26,7 +20,7 @@ function Signup(props){
     return(
         <form id="signup" className="signup-box" onSubmit={onSubmit}>
 			<h1>Sign Up</h1>
-			{errors}
+			{/* {errors} */}
 			<label>
 				Name
 				<input
@@ -55,7 +49,6 @@ function Signup(props){
 			<br />
 
 			<button id="signup-btn" disabled={disabled}>Create Account</button>
-			<button onClick={routeToHome}>Back</button>
 		</form>
     )
 }
