@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NewFood from './newFood'
+import axios from 'axios';
 
 const initialInfo = {
     occasion: '',
@@ -7,8 +8,12 @@ const initialInfo = {
 	date: '',
 };
 
+const initialEvents = [];
+
+
 function NewEvent(){
     const [newEvent, setNewEvent] = useState(initialInfo);
+	const [events, setEvents] = useState(initialEvents)
 
     const handleChange = e => {
 		setNewEvent({
@@ -19,7 +24,15 @@ function NewEvent(){
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// API CALL
+		axios
+        .post('https://potluck-planner-03.herokuapp.com/api/potlucks', events)
+        .then((res) => {
+			setEvents([...events, res.data])
+			setNewEvent(initialInfo)
+		})
+		.catch(err => {
+			console.log(err)
+		})
 	};
 
     return (
