@@ -5,8 +5,10 @@ import { Route, Link, Switch } from 'react-router-dom';
 
 import Login from './components/LoginForm/loginMain'
 import Signup from './components/SignUpForm/signupMain';
-// import NewEvent from './components/newEvent';
+
 import Dashboard from './components/dashboard';
+import NewEvent from './components/newEvent';
+import NewFood from './components/newFood';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -28,13 +30,13 @@ function App() {
               <div className="menu">
                 <ul className="navMenu">
                     <li>
-                      <a href="#0">Home</a>
+                      <a href="/" onClick={logout}>Home</a>
                     </li>
                     <li>
-                      <a href="#0">Login</a>
+                      <a href="/login">Login</a>
                     </li>
                     <li>
-                      <a href="#0">Signup</a>
+                      <a href="/signup">Signup</a>
                     </li>
                 </ul>
               </div>
@@ -68,6 +70,8 @@ function App() {
                   }}
                 />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/newevent" component={NewEvent} />
+              <PrivateRoute exact path="/newfood" component={NewFood} />
               </Switch>
             </div>
 

@@ -3,6 +3,8 @@ import axios from 'axios'
 import Login from './login'
 import formSchema from './loginSchema';
 import * as yup from 'yup';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const initialCredentials = {
 	username: '',
@@ -24,12 +26,17 @@ function LoginMain(){
     const [errors, setErrors] = useState(initialsErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
 
+    const { push } = useHistory();
+
     const submitLogin = (newLogin) => {
         axios  
             .post('https://potluck-planner-03.herokuapp.com/api/auth/login', newLogin)
             .then(res => {
                 setLogins([...logins, res.data])
                 setCredentials(initialCredentials);
+                const token = res.data.token;
+                localStorage.setItem('token', `"${token}"`);
+                push('/dashboard')
             })
             .catch(err => {
                 console.log(err)
@@ -119,4 +126,11 @@ function LoginMain(){
     )
 }
 
-export default LoginMain;
+const mapStateToProps = (state) => {
+    return {
+      username: state.username,
+      password: state.password,
+    };
+  };
+
+  export default connect(mapStateToProps, {})(LoginMain);
