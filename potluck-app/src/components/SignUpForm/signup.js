@@ -20,7 +20,11 @@ function Signup(props){
     return(
         <form id="signup" className="signup-box" onSubmit={onSubmit}>
 			<h1>Sign Up</h1>
-			{/* {errors} */}
+			{/* <div>
+				{errors.username}
+				<br/>
+				{errors.password}
+			</div> */}
 			<label>
 				Name
 				<input

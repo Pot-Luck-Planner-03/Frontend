@@ -28,13 +28,13 @@ function App() {
               <div className="menu">
                 <ul className="navMenu">
                     <li>
-                      <a href="#0">Home</a>
+                      <a href="/" onClick={logout}>Home</a>
                     </li>
                     <li>
-                      <a href="#0">Login</a>
+                      <a href="/login">Login</a>
                     </li>
                     <li>
-                      <a href="#0">Signup</a>
+                      <a href="/signup">Signup</a>
                     </li>
                 </ul>
               </div>
