@@ -27,3 +27,56 @@ nav{
   justify-content: space-between;
   background-color:rgba(255,255,255,0.8);
 }
+.navMenu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  margin-left: 5vw;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 15vh;
+
+}
+
+.logo{
+  font-size: 3rem;
+}
+
+/* MainContent */
+
+.main-content{
+  height: 85vh;
+}
+.cta{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta p{
+  font-size: 2.5rem;
+}
+.cta h1{
+  font-size: 3.5rem;
+}
+.cta-pic{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  border-radius: 15px;
+  height: 200px;
+  width: 90vw;
+  background-image: url('https://www.safeway.ca/wp-content/uploads/2019/10/Quick-Tips-for-Hosting-a-Potluck.jpg');
+}
