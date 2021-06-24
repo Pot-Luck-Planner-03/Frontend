@@ -5,8 +5,10 @@ import { Route, Link, Switch } from 'react-router-dom';
 
 import Login from './components/LoginForm/loginMain'
 import Signup from './components/SignUpForm/signupMain';
-// import NewEvent from './components/newEvent';
+
 import Dashboard from './components/dashboard';
+import NewEvent from './components/newEvent';
+import NewFood from './components/newFood';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -65,6 +67,8 @@ function App() {
                   }}
                 />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/newevent" component={NewEvent} />
+              <PrivateRoute exact path="/newfood" component={NewFood} />
               </Switch>
             </div>
 

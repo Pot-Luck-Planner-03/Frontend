@@ -1,5 +1,5 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import styled from 'styled-components';
 
 
@@ -43,7 +43,7 @@ function Signup(props){
 					type="password"
 					name="password"
 					id="password-input"
-					minLength="5"
+					minLength="2"
 					placeholder="Password"
 					value={values.password}
 					onChange={onChange}
@@ -57,4 +57,10 @@ function Signup(props){
     )
 }
 
-export default Signup;
+const mapStateToProps = (state) => {
+    return {
+      username: state.username,
+      password: state.password,
+    };
+    };
+    export default connect(mapStateToProps, {})(Signup);
