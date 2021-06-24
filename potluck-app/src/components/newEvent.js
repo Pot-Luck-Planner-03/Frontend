@@ -15,6 +15,18 @@ function NewEvent(){
     const [newEvent, setNewEvent] = useState(initialInfo);
 	const [events, setEvents] = useState(initialEvents)
 
+	const [isHidden, setIsHidden] =useState(true)
+
+	function toggleForm(){
+		setIsHidden(!isHidden)
+		document.querySelector('.foodBuilder').classList.toggle('hidden')
+	}
+
+	function cancelForm(){
+		setIsHidden(true)
+		document.querySelector('.builder').classList.add('hidden')
+	}
+
     const handleChange = e => {
 		setNewEvent({
 			...newEvent,
@@ -37,7 +49,7 @@ function NewEvent(){
 
     return (
 		<div className="newEvent">
-			<div className="builder">
+			<div className="builder hidden">
 				<h2>Add a new Event!</h2>
 				<form onSubmit={handleSubmit} id="event-form">
                     <label>
@@ -72,7 +84,11 @@ function NewEvent(){
 						<button id="newEvent-button">Add Event!</button>
 					</div>
 				</form>
+				<button onClick={toggleForm}>
+					Bring a dish!
+				</button>
                 <NewFood />
+				<button onClick={cancelForm}>Cancel</button>
 			</div>
 		</div>
 	);
