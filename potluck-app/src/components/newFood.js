@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const initialInfo = {
+const initialDishInfo = {
 	Dish: '',
 	Volunteer: '',
 };
 
 function NewFood(){
-    const [newFood, setNewFood] = useState(initialInfo);
+    const [newFood, setNewFood] = useState(initialDishInfo);
 
     const handleChange = e => {
 		setNewFood({
@@ -17,7 +18,17 @@ function NewFood(){
 
     const handleSubmit = e => {
 		e.preventDefault();
-		// API CALL
+		axios
+        .post('https://potluck-planner-03.herokuapp.com/api/foods', newFood)
+        .then((res) => {
+          //console.log(res.data);
+          setNewFood([...newFood, res.data]);
+          setNewFood(initialDishInfo);
+          
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 	};
 
     return (
