@@ -33,7 +33,7 @@ function NewFood(){
 
     return (
 		<div className="newFood">
-			<div className="builder">
+			<div className="foodBuilder hidden">
 				<h2>Want to bring a dish?</h2>
 				<form onSubmit={handleSubmit} id="event-form">
 					<label>
