@@ -71,6 +71,8 @@ a{
 }
 .cta h1{
   font-size: 3.5rem;
+  color: white;
+  text-shadow: 2px -2px rgba(0, 0, 0, 1);;
 }
 .cta-pic{
   display: flex;
@@ -112,3 +114,23 @@ a{
   display: none;
 }
 
+/* Dashboard  */
+
+.event-panel{
+  width: 75vw;
+  height: 600px;
+  background-image: url('https://threemanycooks.com/wp-content/uploads/2012/02/CNYPL1.jpg');
+  background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.event-panel h2{
+  font-size: 2.5rem;
+  text-shadow: 2px -2px rgba(0, 0, 0, 1);;
+}
+
+.addEvent h3{
+  font-size: 2rem;
+  text-shadow: 2px -2px rgba(0, 0, 0, 1);;
+}
