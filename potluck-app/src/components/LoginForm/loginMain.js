@@ -34,8 +34,9 @@ function LoginMain(){
             .then(res => {
                 setLogins([...logins, res.data])
                 setCredentials(initialCredentials);
+                // console.log("res data", res)
                 const token = res.data.token;
-                localStorage.setItem('token', `"${token}"`);
+                localStorage.setItem('token', token);
                 push('/dashboard')
             })
             .catch(err => {
@@ -68,13 +69,6 @@ function LoginMain(){
         })
     }
 
-    useEffect(() => {
-        formSchema.isValid(credentials).then((valid) => {
-          setDisabled(!valid);
-        });
-      }, [credentials]);
-
-
     const handleSubmit = () => {
         const newLogin = {
             username: credentials.username.trim(),
@@ -82,6 +76,15 @@ function LoginMain(){
         }
         submitLogin(newLogin);
     }
+
+    useEffect(() => {
+        formSchema.isValid(credentials).then((valid) => {
+          setDisabled(!valid);
+        });
+      }, [credentials]);
+
+
+
 
 
     return (

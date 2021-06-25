@@ -9,6 +9,7 @@ import Signup from './components/SignUpForm/signupMain';
 import Dashboard from './components/dashboard';
 import NewEvent from './components/newEvent';
 import NewFood from './components/newFood';
+import PotluckList from './components/potluckList';
 
 import PrivateRoute from './PrivateRoute';
 
@@ -46,6 +47,7 @@ function App() {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/newevent" component={NewEvent} />
               <PrivateRoute exact path="/newfood" component={NewFood} />
+              <PrivateRoute exact path="/potlucklist" component={PotluckList} />
                 {/* <Route path="/dashboard">
                   <Dashboard />
                 </Route> */}
