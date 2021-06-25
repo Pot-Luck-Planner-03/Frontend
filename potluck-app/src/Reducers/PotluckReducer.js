@@ -4,12 +4,21 @@ import {
     LOGIN_FEATURE,
   } from '../Actions/potluckAction';
   
-  const initialState = {
-    user: {
-      username: '',
-      password: '',
-    }
-  };
+const initialState = {
+  user: {
+    username: '',
+    password: '',
+  },
+  item: {
+    potluck_name: '',
+    potluck_location: '',
+    potluck_date: '',
+    potluck_time: '',
+    potluck_description: '',
+    organizer: '',
+  }
+  // potlucks: [],
+};
   
   export const potluckReducer = (state = initialState, action) => {
     switch (action.type) {

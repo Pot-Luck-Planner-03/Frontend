@@ -6,9 +6,12 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 
 const initialInfo = {
-    occasion: '',
-	location: '',
-	date: '',
+    potluck_name: '',
+	potluck_location: '',
+	potluck_date: '',
+    potluck_time:'',
+    potluck_description:'',
+    organizer:'',
 };
 
 const initialEvents = [];
@@ -25,6 +28,7 @@ function NewEventMain(){
         .then((res) => {
 			setEvents([...events, res.data])
 			setNewEvent(initialInfo)
+            push('/dashboard')
 		})
 		.catch(err => {
 			console.log(err)
@@ -40,9 +44,10 @@ function NewEventMain(){
 
     const formSubmit = () => {
         const event = {
-          occassion: newEvent.occassion.trim(),
-          location: newEvent.location.trim(),
-          date: newEvent.date.trim(),
+          potluck_name: newEvent.potluck_name.trim(),
+          potluck_location: newEvent.potluck_location.trim(),
+          potluck_date: newEvent.potluck_date.trim(),
+          potluck_time: newEvent.potluck_time.trim(),
         };
         postNewEvent(event);
         addFeature(event);
@@ -57,6 +62,6 @@ function NewEventMain(){
     )
 }
 
-// export default connect(null, { addFeature })(NewEventMain);
+export default connect(null, { addFeature })(NewEventMain);
 
-export default NewEventMain;
+// export default NewEventMain;
