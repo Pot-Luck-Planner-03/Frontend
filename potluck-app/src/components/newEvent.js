@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import NewFood from './newFood'
+import { connect } from 'react-redux';
+import { addFeature } from '../Actions/potluckAction';
 
 function NewEvent(props){
 	const { values, submit, change } = props;
@@ -36,30 +38,40 @@ function NewEvent(props){
                         Event Name
                         <input 
                             type="text"
-							name="occasion"
+							name="potluck_name"
 							id="occasion-input"
                             onChange={handleChange}
-							value={values.occasion}
+							value={values.potluck_name}
                         />
                     </label>
 					<label>
 						Location
 						<input
 							type="text"
-							name="location"
+							name="potluck_location"
 							id="location-input"
                             onChange={handleChange}
-							value={values.location}
+							value={values.potluck_location}
 						/>
 					</label>
 					<label>
 						Date
 						<input
 							type="date"
-							name="date"
+							name="potluck_date"
 							id="date-input"
                             onChange={handleChange}
-							value={values.date}
+							value={values.potluck_date}
+						/>
+					</label>
+					<label>
+						Time
+						<input
+							type="time"
+							name="potluck_time"
+							id="date-input"
+                            onChange={handleChange}
+							value={values.potluck_time}
 						/>
 					</label>
 					 
@@ -77,4 +89,11 @@ function NewEvent(props){
 	);
 }
 
-export default NewEvent;
+// export default NewEvent;
+
+const mapStateToProps = (state) => {
+	return {
+	  item: state.item,
+	};
+  };
+  export default connect(mapStateToProps, { addFeature })(NewEvent);
