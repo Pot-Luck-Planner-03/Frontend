@@ -16,7 +16,7 @@ const initialInfo = {
 
 const initialEvents = [];
 
-function NewEventMain(){
+function NewEventMain(props){
     const [newEvent, setNewEvent] = useState(initialInfo);
 	const [events, setEvents] = useState(initialEvents)
 
@@ -28,7 +28,7 @@ function NewEventMain(){
         .then((res) => {
 			setEvents([...events, res.data])
 			setNewEvent(initialInfo)
-            push('/dashboard')
+            push('/potlucklist')
 		})
 		.catch(err => {
 			console.log(err)
@@ -50,7 +50,7 @@ function NewEventMain(){
           potluck_time: newEvent.potluck_time.trim(),
         };
         postNewEvent(event);
-        addFeature(event);
+        props.addFeature(event);
       };
 
     return(
