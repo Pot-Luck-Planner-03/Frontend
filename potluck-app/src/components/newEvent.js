@@ -1,19 +1,8 @@
 import React, { useState } from 'react';
 import NewFood from './newFood'
-import axios from 'axios';
 
-const initialInfo = {
-    occasion: '',
-	location: '',
-	date: '',
-};
-
-const initialEvents = [];
-
-
-function NewEvent(){
-    const [newEvent, setNewEvent] = useState(initialInfo);
-	const [events, setEvents] = useState(initialEvents)
+function NewEvent(props){
+	const { values, submit, change } = props;
 
 	const [isHidden, setIsHidden] =useState(true)
 
@@ -28,25 +17,16 @@ function NewEvent(){
 	}
 
     const handleChange = e => {
-		setNewEvent({
-			...newEvent,
-			[e.target.name]: e.target.value
-		});
+		const { name, value } = e.target;
+		change(name, value);
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		axios
-        .post('https://potluck-planner-03.herokuapp.com/api/potlucks', events)
-        .then((res) => {
-			setEvents([...events, res.data])
-			setNewEvent(initialInfo)
-		})
-		.catch(err => {
-			console.log(err)
-		})
-	};
+		submit();
 
+	};
+	console.log(props)
     return (
 		<div className="newEvent">
 			<div className="builder hidden">
@@ -59,6 +39,7 @@ function NewEvent(){
 							name="occasion"
 							id="occasion-input"
                             onChange={handleChange}
+							value={values.occasion}
                         />
                     </label>
 					<label>
@@ -68,15 +49,17 @@ function NewEvent(){
 							name="location"
 							id="location-input"
                             onChange={handleChange}
+							value={values.location}
 						/>
 					</label>
 					<label>
 						Date
 						<input
 							type="date"
-							name="Date"
+							name="date"
 							id="date-input"
                             onChange={handleChange}
+							value={values.date}
 						/>
 					</label>
 					 

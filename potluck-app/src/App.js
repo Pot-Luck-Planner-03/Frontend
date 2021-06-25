@@ -14,9 +14,9 @@ import PrivateRoute from './PrivateRoute';
 
 function App() {
 
-    // const logout = () => {
-    //   window.localStorage.removeItem('token');
-    // };
+    const logout = () => {
+      window.localStorage.removeItem('token');
+    };
 
   return (
     <div className="App">
@@ -42,10 +42,13 @@ function App() {
               </div>
             </div>
             <div className='main-content'>
-              <Switch>
-                <Route path="/dashboard">
+              <Switch>              
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/newevent" component={NewEvent} />
+              <PrivateRoute exact path="/newfood" component={NewFood} />
+                {/* <Route path="/dashboard">
                   <Dashboard />
-                </Route>
+                </Route> */}
                 <Route path="/signup">
                   <Signup />
                 </Route>
@@ -69,9 +72,7 @@ function App() {
                     );
                   }}
                 />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/newevent" component={NewEvent} />
-              <PrivateRoute exact path="/newfood" component={NewFood} />
+
               </Switch>
             </div>
 
